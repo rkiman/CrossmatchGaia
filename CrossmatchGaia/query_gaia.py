@@ -22,10 +22,10 @@ def query_gaia_match(user_name,table_2_match,radius_arc):
 	in table_2_match plus all Gaia DR2 columns. 
 	'''
 
-	#Gaia.login_gui() 
+	Gaia.login_gui() 
 	#Ask for userName and userPassword to authenticated access mode
 	#This could be done with: 
-	Gaia.login(user='rkiman', password='MiraMasAlla+11') 
+	#Gaia.login(user='user_name', password='user_pass') 
 
 	#Cross-match user table and gaia source
 	job = Gaia.launch_job_async("""\
