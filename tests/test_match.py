@@ -20,3 +20,14 @@ def test_move_epoch_back():
 	assert np.isclose(dec_new[0],2.9999975)
 	assert np.isclose(ra_new[2],1.099987)
 	assert np.isclose(dec_new[2],2.2999974)
+
+def text_calc_sep():
+	
+	ra1 = 185.9891288578898
+	dec1 = 24.891416254023895
+	ra2 = 69.56196935050878
+	dec2 = 26.194469466376514
+
+	sep = match.calc_sep(ra1,ra2,dec1,dec2)
+
+	assert np.isclose(sep, 360589.5322959722)

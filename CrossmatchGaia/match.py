@@ -1,22 +1,24 @@
 from CrossmatchGaia import jdutil
 import numpy as np
 from astropy.table import Table
+from astropy.coordinates import SkyCoord
+from astropy import units as u
 
 def calc_sep(ra1,ra2,dec1,dec2):
     '''
     input:
-    ra1 (array): right ascention first group of stars (deg) 
-    dec1 (array): declination first group of stars (deg) 
-    ra2 (array): right ascention second group of stars (deg) 
-    dec2 (array): declination second group of stars (deg)
+    ra1 (float/array): right ascention first group of stars (deg) 
+    dec1 (float/array): declination first group of stars (deg) 
+    ra2 (float/array): right ascention second group of stars (deg) 
+    dec2 (float/array): declination second group of stars (deg)
     
     returns:
-    sep (array): angular separation (arcsec)
+    sep_arcsec (float/array): angular separation (arcsec)
     '''
-    positions_gaiamatches = SkyCoord(ra1 * u.deg, dec1 * u.deg, frame='icrs')
-    positions_sdss = SkyCoord(ra2 * u.deg, dec2 * u.deg, frame='icrs')
+    positions1 = SkyCoord(ra1 * u.deg, dec1 * u.deg, frame='icrs')
+    positions2 = SkyCoord(ra2 * u.deg, dec2 * u.deg, frame='icrs')
 
-    sep_arcsec = positions_gaiamatches.separation(positions_sdss).arcsecond
+    sep_arcsec = positions1.separation(positions2).arcsecond
     return sep_arcsec
 
 def move_epoch_back(ra, dec, pmra, pmde, mjd, goodpm, yr_from):
