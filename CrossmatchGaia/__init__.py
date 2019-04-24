@@ -1,2 +1,2 @@
 
-__all__ = ['query_gaia', 'match', 'jdutil']
+__all__ = ['query_gaia', 'pre_query_gaia', 'jdutil']
